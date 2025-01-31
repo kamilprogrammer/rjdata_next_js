@@ -11,7 +11,7 @@ module.exports = {
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: ["class", "class"],
+  darkMode: ["class"],
   theme: {
     screens: {
       xs: "375px",
@@ -71,6 +71,8 @@ module.exports = {
       },
       animation: {
         meteor: "meteor 5s linear infinite",
+        "shiny-text": "shiny-text 8s infinite",
+        shine: "shine var(--duration) infinite linear",
       },
       keyframes: {
         meteor: {
@@ -84,6 +86,25 @@ module.exports = {
           "100%": {
             transform: "rotate(215deg) translateX(-500px)",
             opacity: "0",
+          },
+        },
+        "shiny-text": {
+          "0%, 90%, 100%": {
+            "background-position": "calc(-100% - var(--shiny-width)) 0",
+          },
+          "30%, 60%": {
+            "background-position": "calc(100% + var(--shiny-width)) 0",
+          },
+        },
+        shine: {
+          "0%": {
+            "background-position": "0% 0%",
+          },
+          "50%": {
+            "background-position": "100% 100%",
+          },
+          to: {
+            "background-position": "0% 0%",
           },
         },
       },
