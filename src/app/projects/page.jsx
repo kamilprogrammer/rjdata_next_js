@@ -2,6 +2,9 @@
 import Image from "next/image";
 import React from "react";
 import { Timeline } from "@/app/components/ui/timeline";
+{
+  /*HI PLS WORK PLS PLS PLS PLS */
+}
 const data = [
   {
     title: "Early 2003",
