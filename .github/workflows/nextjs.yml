@@ -1,15 +1,15 @@
-name: Deploy Next.js to GitHub Pages
+name: Deploy Next.js to GitHub Pages (Different Repo)
 
 on:
   push:
     branches:
-      - master
+      - master  # Change this if using a different branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout Source Repository
         uses: actions/checkout@v4
 
       - name: Install Dependencies
@@ -19,10 +19,13 @@ jobs:
         run: |
           npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: out
-          token: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Deploy to Another Repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git clone --depth 1 https://github.com/kamilprogrammer/deploy.git deploy
+          rsync -av --delete out/ deploy/
+          cd deploy
+          git add .
+          git commit -m "Deploy Next.js site 🚀"
+          git push https://github.com/kamilprogrammer/deploy.git master
