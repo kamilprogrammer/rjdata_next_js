@@ -21,8 +21,8 @@ jobs:
 
       - name: Deploy to Another Repository
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "kamilprogrammer"
+          git config --global user.email "kg0390217@gmail.com"
           git clone --depth 1 https://github.com/kamilprogrammer/deploy.git deploy
           rsync -av --delete out/ deploy/
           cd deploy
